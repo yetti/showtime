@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode
 }
 
-const Layout = ({ title, children }: LayoutProps) => {
+const CenteredLayout = ({ title, children }: LayoutProps) => {
   return (
     <>
       <Head>
@@ -20,9 +20,9 @@ const Layout = ({ title, children }: LayoutProps) => {
       <Box>
         <Flex
           minH={"100vh"}
+          align={"center"}
+          justify={"center"}
           bg={useColorModeValue("gray.50", "gray.800")}
-          py={{ base: 2 }}
-          px={{ base: 4 }}
         >
           {children}
         </Flex>
@@ -31,4 +31,4 @@ const Layout = ({ title, children }: LayoutProps) => {
   )
 }
 
-export default Layout
+export default CenteredLayout

@@ -1,16 +1,17 @@
 import { BlitzPage, useMutation } from "blitz"
-import Layout from "app/core/layouts/Layout"
+import CenteredLayout from "app/core/layouts/CenteredLayout"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import { ForgotPassword } from "app/auth/validations"
 import forgotPassword from "app/auth/mutations/forgotPassword"
+import { Heading, Stack } from "@chakra-ui/react"
 
 const ForgotPasswordPage: BlitzPage = () => {
   const [forgotPasswordMutation, { isSuccess }] = useMutation(forgotPassword)
 
   return (
-    <div>
-      <h1>Forgot your password?</h1>
+    <Stack spacing={2} mx={"auto"} maxW={"lg"} py={12} px={6} align={"center"}>
+      <Heading mb={4}>Forgot your password?</Heading>
 
       {isSuccess ? (
         <div>
@@ -38,11 +39,13 @@ const ForgotPasswordPage: BlitzPage = () => {
           <LabeledTextField name="email" label="Email" placeholder="Email" />
         </Form>
       )}
-    </div>
+    </Stack>
   )
 }
 
 ForgotPasswordPage.redirectAuthenticatedTo = "/"
-ForgotPasswordPage.getLayout = (page) => <Layout title="Forgot Your Password?">{page}</Layout>
+ForgotPasswordPage.getLayout = (page) => (
+  <CenteredLayout title="Forgot Your Password?">{page}</CenteredLayout>
+)
 
 export default ForgotPasswordPage
